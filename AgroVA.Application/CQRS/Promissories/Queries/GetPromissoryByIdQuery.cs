@@ -1,6 +1,6 @@
 ﻿namespace AgroVA.Application;
 
-public class GetPromissorieByIdQuery
+public class GetPromissoryByIdQuery
 {
 
 }

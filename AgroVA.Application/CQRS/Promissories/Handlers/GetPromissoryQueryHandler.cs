@@ -1,6 +1,6 @@
 ﻿namespace AgroVA.Application;
 
-public class PromissorieDeleteCommand
+public class GetPromissoryQueryHandler
 {
 
 }

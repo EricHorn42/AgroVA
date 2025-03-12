@@ -1,6 +1,6 @@
 ﻿namespace AgroVA.Application;
 
-public class PromissorieUpdateCommand
+public class PromissoryUpdateCommand
 {
 
 }
