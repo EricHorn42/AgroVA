@@ -7,8 +7,8 @@ namespace AgroVA.Domain.Entities
     public sealed class Rent : EntityBase
     {
         public string Person { get; private set; }
-        public float Percent { get; private set; }
-        public float Value { get; private set; }
+        public decimal Percent { get; private set; }
+        public decimal Value { get; private set; }
         public string? Annotation { get; private set; }
 
         public int FarmerId { get; set; }
@@ -17,26 +17,26 @@ namespace AgroVA.Domain.Entities
         public int HarvestId { get; set; }
         public Harvest Harvest { get; set; }
 
-        public Rent(int id, string? person, float percent, float value, string? annotation)
+        public Rent(int id, string? person, decimal percent, decimal value, string? annotation)
         {
             DomainExceptionValidation.When(id < 1, RentMessage.InvalidId);
             Id = id;
             ValidateDomain(person, percent, value, annotation);
         }
 
-        public Rent(string? person, float percent, float value, string? annotation)
+        public Rent(string? person, decimal percent, decimal value, string? annotation)
         {
             ValidateDomain(person, percent, value, annotation);
         }
 
-        public void Update(string? person, float percent, float value, string? annotation, int farmerId, int harvestId)
+        public void Update(string? person, decimal percent, decimal value, string? annotation, int farmerId, int harvestId)
         {
             ValidateDomain(person, percent, value, annotation);
             FarmerId = farmerId;
             HarvestId = harvestId;
         }
 
-        public void ValidateDomain(string? person, float percent, float value, string? annotation)
+        public void ValidateDomain(string? person, decimal percent, decimal value, string? annotation)
         {
             DomainExceptionValidation.When(string.IsNullOrEmpty(person), RentMessage.InvalidPerson);
             DomainExceptionValidation.When(percent < 0 || percent > 100, RentMessage.InvalidPercent);

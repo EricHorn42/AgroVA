@@ -5,8 +5,8 @@ namespace AgroVA.Domain.Entities
 {
     public sealed class Receipt : EntityBase
     {
-        public DateOnly Timestamp { get; private set; }
-        public float Value { get; private set; }
+        public DateTime Timestamp { get; private set; }
+        public decimal Value { get; private set; }
 
         public int FarmerId { get; set; }
         public Farmer Farmer { get; set; }
@@ -14,28 +14,28 @@ namespace AgroVA.Domain.Entities
         public int HarvestId { get; set; }
         public Harvest Harvest { get; set; }
 
-        public Receipt(int id, DateOnly timestamp, float value)
+        public Receipt(int id, DateTime timestamp, decimal value)
         {
             DomainExceptionValidation.When(id < 1, ReceiptMessage.InvalidId);
             Id = id;
             ValidateDomain(timestamp, value);
         }
 
-        public Receipt(DateOnly timestamp, float value)
+        public Receipt(DateTime timestamp, decimal value)
         {
             ValidateDomain(timestamp, value);
         }
 
-        public void Update(DateOnly timestamp, float value, int farmerId, int harvestId)
+        public void Update(DateTime timestamp, decimal value, int farmerId, int harvestId)
         {
             ValidateDomain(timestamp, value);
             FarmerId = farmerId;
             HarvestId = harvestId;
         }
 
-        public void ValidateDomain(DateOnly timestamp, float value)
+        public void ValidateDomain(DateTime timestamp, decimal value)
         {
-            DomainExceptionValidation.When(timestamp == DateOnly.MinValue, ReceiptMessage.InvalidTimestamp);
+            DomainExceptionValidation.When(timestamp == DateTime.MinValue, ReceiptMessage.InvalidTimestamp);
             DomainExceptionValidation.When(value < 0, ReceiptMessage.InvalidValue);
             Timestamp = timestamp;
             Value = value;

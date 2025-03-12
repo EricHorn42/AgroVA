@@ -1,13 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AgroVA.Domain\AgroVA.Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="14.0.0">
+			<PrivateAssets>none</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="MediatR" Version="12.4.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\AgroVA.Domain\AgroVA.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="CQRS\HuskPrices\Commands\" />
+	  <Folder Include="CQRS\HuskPrices\Handlers\" />
+	  <Folder Include="CQRS\HuskPrices\Queries\" />
+	  <Folder Include="CQRS\Loads\Commands\" />
+	  <Folder Include="CQRS\Loads\Handlers\" />
+	  <Folder Include="CQRS\Loads\Queries\" />
+	  <Folder Include="CQRS\Promissories\Commands\" />
+	  <Folder Include="CQRS\Promissories\Handlers\" />
+	  <Folder Include="CQRS\Promissories\Queries\" />
+	  <Folder Include="CQRS\Receipts\Commands\" />
+	  <Folder Include="CQRS\Receipts\Handlers\" />
+	  <Folder Include="CQRS\Receipts\Queries\" />
+	  <Folder Include="CQRS\Rents\Commands\" />
+	  <Folder Include="CQRS\Rents\Handlers\" />
+	  <Folder Include="CQRS\Rents\Queries\" />
+	</ItemGroup>
 
 </Project>
