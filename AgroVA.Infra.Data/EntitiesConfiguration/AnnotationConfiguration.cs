@@ -8,7 +8,20 @@ namespace AgroVA.Infra.Data.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<Annotation> builder)
         {
-            throw new NotImplementedException();
+           builder.HasKey(k => k.Id);
+            
+           builder.Property(p => p.Observation)
+                .IsRequired()
+                .HasMaxLength(150);            
+            builder.Property(p => p.Timestamp)
+                .IsRequired();
+
+            builder.HasOne(p => p.Farmer)
+                .WithMany(p => p.Annotations)
+                .HasForeignKey(p => p.FarmerId);
+            builder.HasOne(p => p.Harvest)
+                .WithMany(p => p.Annotations)
+                .HasForeignKey(p => p.HarvestId);
         }
     }
 }

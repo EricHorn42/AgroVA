@@ -1,4 +1,7 @@
-﻿using AgroVA.Domain.Interfaces;
+﻿using AgroVA.Application.Interfaces;
+using AgroVA.Application.Mappings;
+using AgroVA.Application.Services;
+using AgroVA.Domain.Interfaces;
 using AgroVA.Infra.Data.Context;
 using AgroVA.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +34,17 @@ namespace AgroVA.Infra.IoC
             services.AddScoped<IPromissoryRepository, PromissoryRepository>();
             services.AddScoped<IReceiptRepository, ReceiptRepository>();
             services.AddScoped<IRentRepository, RentRepository>();
+
+            services.AddScoped<IAnnotationService, AnnotationService>();
+            services.AddScoped<IFarmerService, FarmerService>();
+            services.AddScoped<IHarvestService, HarvestService>();
+            services.AddScoped<IHuskPriceService, HuskPriceService>();
+            services.AddScoped<ILoadService, LoadService>();
+            services.AddScoped<IPromissoryService, PromissoryService>();
+            services.AddScoped<IReceiptService, ReceiptService>();
+            services.AddScoped<IRentService, RentService>();
+
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             return services;
 

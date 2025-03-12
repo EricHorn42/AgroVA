@@ -12,12 +12,12 @@ namespace AgroVA.Infra.Data.EntitiesConfiguration
 
             builder.Property(p => p.Timestamp)
                 .IsRequired();
-            builder.Property(p => p.Price)
-                .IsRequired()
-                .HasPrecision(5, 2);
             builder.Property(p => p.Percent)
                 .IsRequired()
-                .HasPrecision(1, 2);
+                .HasPrecision(3, 2);
+            builder.Property(p => p.Price)
+                .IsRequired()
+                .HasPrecision(7, 2);
 
             builder.HasOne(fk => fk.Harvest)
                 .WithMany(fk => fk.HuskPrices)

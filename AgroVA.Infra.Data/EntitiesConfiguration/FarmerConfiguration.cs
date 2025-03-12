@@ -13,6 +13,9 @@ namespace AgroVA.Infra.Data.EntitiesConfiguration
             builder.Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(150);
+            builder.Property(p => p.Phone)
+                .IsRequired()                
+                .HasMaxLength(13);            
         }
     }
 }

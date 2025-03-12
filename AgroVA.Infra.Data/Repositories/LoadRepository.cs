@@ -6,10 +6,8 @@ namespace AgroVA.Infra.Data.Repositories
 {
     public class LoadRepository : RepositoryBase<Load>, ILoadRepository
     {
-        private readonly ApplicationDbContext _context;
         public LoadRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
     }
 }

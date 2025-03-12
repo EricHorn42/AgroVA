@@ -8,10 +8,7 @@ namespace AgroVA.Infra.Data.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        public ApplicationDbContext()
-        {
-            
-        }
+        
         public DbSet<Annotation> Annotations { get; set; }
         public DbSet<Farmer> Farmers { get; set; }
         public DbSet<Harvest> Harvests { get; set; }

@@ -13,11 +13,13 @@ namespace AgroVA.Infra.Data.EntitiesConfiguration
             builder.Property(p => p.Timestamp)
                 .IsRequired();
             builder.Property(p => p.GreenWeight)
-                .HasPrecision(5, 3);
+                .HasPrecision(8, 3);
             builder.Property(p => p.DryWeight)
-                .HasPrecision(5, 3);
+                .HasPrecision(8, 3);
             builder.Property(p => p.Price)
-                .HasPrecision(8, 2);
+                .HasPrecision(10, 2);
+            builder.Property(p => p.WholePercent)
+                .HasPrecision(3, 2);
             builder.Property(p => p.Register)
                 .IsRequired();
             builder.Property(p => p.Invoice)

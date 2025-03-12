@@ -6,10 +6,8 @@ namespace AgroVA.Infra.Data.Repositories
 {
     public class HuskPriceRepository : RepositoryBase<HuskPrice>, IHuskPriceRepository
     {
-        private readonly ApplicationDbContext _context;
         public HuskPriceRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
     }
 }

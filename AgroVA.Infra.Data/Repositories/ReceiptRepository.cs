@@ -6,10 +6,8 @@ namespace AgroVA.Infra.Data.Repositories
 {
     public class ReceiptRepository : RepositoryBase<Receipt>, IReceiptRepository
     {
-        private readonly ApplicationDbContext _context;
         public ReceiptRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
     }
     

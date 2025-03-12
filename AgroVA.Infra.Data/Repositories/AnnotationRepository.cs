@@ -6,10 +6,8 @@ namespace AgroVA.Infra.Data.Repositories
 {
     public class AnnotationRepository : RepositoryBase<Annotation>, IAnnotationRepository
     {
-        private readonly ApplicationDbContext _context;
         public AnnotationRepository(ApplicationDbContext context) : base(context)
         {            
-            _context = context;
         }
 
     }

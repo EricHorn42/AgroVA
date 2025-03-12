@@ -7,10 +7,8 @@ namespace AgroVA.Infra.Data.Repositories
 {
     public class RentRepository : RepositoryBase<Rent>, IRentRepository
     {
-        private readonly ApplicationDbContext _context;
         public RentRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
         }
 
         public async Task<Rent> GetFarmerByIdAsync(int? id)

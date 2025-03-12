@@ -4,9 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AgroVA.Infra.Data.Repositories
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> 
+        where TEntity : class
     {
-        private readonly ApplicationDbContext _context;
+        protected readonly ApplicationDbContext _context;
         
         public RepositoryBase(ApplicationDbContext context)
         {
