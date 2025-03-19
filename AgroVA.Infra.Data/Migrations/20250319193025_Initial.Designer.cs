@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgroVA.Infra.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250309140339_Initial")]
+    [Migration("20250319193025_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -44,8 +44,8 @@ namespace AgroVA.Infra.Data.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Timestamp")
+                        .HasColumnType("date");
 
                     b.HasKey("Id");
 
@@ -114,8 +114,8 @@ namespace AgroVA.Infra.Data.Migrations
                         .HasPrecision(7, 2)
                         .HasColumnType("decimal(7,2)");
 
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Timestamp")
+                        .HasColumnType("date");
 
                     b.HasKey("Id");
 
@@ -156,11 +156,12 @@ namespace AgroVA.Infra.Data.Migrations
                     b.Property<int>("Register")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Timestamp")
+                        .HasColumnType("date");
 
                     b.Property<decimal?>("WholePercent")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(3, 2)
+                        .HasColumnType("decimal(3,2)");
 
                     b.HasKey("Id");
 
@@ -185,8 +186,8 @@ namespace AgroVA.Infra.Data.Migrations
                     b.Property<int>("HarvestId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Timestamp")
+                        .HasColumnType("date");
 
                     b.Property<decimal>("Value")
                         .HasColumnType("decimal(18,2)");

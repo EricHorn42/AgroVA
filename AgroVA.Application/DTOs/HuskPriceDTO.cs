@@ -10,27 +10,28 @@ namespace AgroVA.Application.DTOs
     {
         [Required(ErrorMessage = HuskPriceMessage.RequiredTimestamp)]
         [Timestamp]
-        [DisplayName("Timestamp")]
-        public DateTime Timestamp { get; set; }
+        [DisplayName("Data")]
+        public DateOnly Timestamp { get; set; }
 
         [Required(ErrorMessage = HuskPriceMessage.RequiredPercent)]
-        [MaxLength(3, ErrorMessage = HuskPriceMessage.MaxLengthPercent)]
+        //[MaxLength(3, ErrorMessage = HuskPriceMessage.MaxLengthPercent)]
         [Column(TypeName = "decimal(3,2)")]
         [DisplayFormat(DataFormatString = "{0:P2}")]
-        [DisplayName("Percent")]
+        [DisplayName("Percentual")]
         public decimal Percent { get; set; }
 
         [Required(ErrorMessage = HuskPriceMessage.RequiredPrice)]
-        [MaxLength(7, ErrorMessage = HuskPriceMessage.MaxlengthPrice)]
+        //[MaxLength(7, ErrorMessage = HuskPriceMessage.MaxlengthPrice)]
         [Column(TypeName = "decimal(7,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
-        [DisplayName("Price")]
+        [DisplayName("Preço")]
         public decimal Price { get; set; }
 
-        [DisplayName("Harvest")]
         public int HarvestId { get; set; }
-        public Harvest Harvest { get; set; }
+
+        [DisplayName("Safra")]
+        public Harvest? Harvest { get; set; }
 
     }
 }

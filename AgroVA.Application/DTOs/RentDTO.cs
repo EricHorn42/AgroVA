@@ -10,14 +10,14 @@ namespace AgroVA.Application.DTOs
     {
         [Required(ErrorMessage = RentMessage.RequiredPerson)]
         [MaxLength(200, ErrorMessage = RentMessage.MaxLengthPerson)]
-        [DisplayName("Person")]
+        [DisplayName("Pessoa")]
         public string Person { get; set; }
 
         [Required(ErrorMessage = RentMessage.RequiredPercent)]
         [MaxLength(3, ErrorMessage = RentMessage.MaxLengthPercent)]
         [Column(TypeName = "decimal(3,2)")]
         [DisplayFormat(DataFormatString = "{0:P2}")]
-        [DisplayName("Percent")]
+        [DisplayName("Percentual")]
         public decimal Percent { get; set; }
 
         [Required(ErrorMessage = RentMessage.RequiredValue)]
@@ -25,19 +25,21 @@ namespace AgroVA.Application.DTOs
         [Column(TypeName = "decimal(10,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
-        [DisplayName("Value")]
+        [DisplayName("Valor")]
         public decimal Value { get; set; }
 
         [MaxLength(500, ErrorMessage = RentMessage.MaxLengthAnnotation)]
-        [DisplayName("Annotation")]
+        [DisplayName("Anotações")]
         public string? Annotation { get; set; }
 
-        [DisplayName("Farmer")]
         public int FarmerId { get; set; }
-        public Farmer Farmer { get; set; }
 
-        [DisplayName("Harvest")]
+        [DisplayName("Produtor")]
+        public Farmer? Farmer { get; set; }
+
         public int HarvestId { get; set; }
-        public Harvest Harvest { get; set; }
+
+        [DisplayName("Safra")]
+        public Harvest? Harvest { get; set; }
     }
 }

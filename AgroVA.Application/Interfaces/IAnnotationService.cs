@@ -3,6 +3,6 @@
 namespace AgroVA.Application.Interfaces
 {
     public interface IAnnotationService : IServiceBase<AnnotationDTO>
-    {
+    {        
     }
 }

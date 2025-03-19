@@ -24,9 +24,6 @@
 	  <Folder Include="CQRS\Loads\Commands\" />
 	  <Folder Include="CQRS\Loads\Handlers\" />
 	  <Folder Include="CQRS\Loads\Queries\" />
-	  <Folder Include="CQRS\Promissories\Commands\" />
-	  <Folder Include="CQRS\Promissories\Handlers\" />
-	  <Folder Include="CQRS\Promissories\Queries\" />
 	  <Folder Include="CQRS\Receipts\Commands\" />
 	  <Folder Include="CQRS\Receipts\Handlers\" />
 	  <Folder Include="CQRS\Receipts\Queries\" />

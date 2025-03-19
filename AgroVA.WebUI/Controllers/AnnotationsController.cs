@@ -1,24 +1,31 @@
 ﻿using AgroVA.Application.DTOs;
 using AgroVA.Application.Interfaces;
+using AgroVA.Domain.Interfaces;
+using AgroVA.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ActionConstraints;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgroVA.WebUI.Controllers
 {
-    public class AnnotationsController : Controller
+    public class AnnotationsController : ControllerBase<IAnnotationService, AnnotationDTO>
     {
-        private readonly IAnnotationService _service;
+        private readonly IFarmerRepository _farmerRepository;
+        private readonly IHarvestRepository _harvestRepository;
 
-        public AnnotationsController(IAnnotationService service) 
+        public AnnotationsController(IAnnotationService service, IFarmerRepository farmerRepository, IHarvestRepository harvestRepository) : base(service)
         {
-            _service = service;
+            _farmerRepository = farmerRepository;
+            _harvestRepository = harvestRepository;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public override async Task<IActionResult> Create()
         {
-            var anotations = await _service.GetAllAsync();
-            return View(anotations);
+            ViewData["FarmerId"] = new SelectList(await _farmerRepository.GetAllAsync(), "Id", "Name");
+            ViewData["HarvestId"] = new SelectList(await _harvestRepository.GetAllAsync(), "Id", "Year");
+            return View();
         }
-
     }
 }

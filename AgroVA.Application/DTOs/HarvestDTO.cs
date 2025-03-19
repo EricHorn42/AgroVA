@@ -7,7 +7,7 @@ namespace AgroVA.Application.DTOs
     public class HarvestDTO : DTOBase
     {
         [Required(ErrorMessage = HarvestMessage.RequiredYear)]
-        [DisplayName("Year")]
+        [DisplayName("Ano")]
         public int Year { get; set; }
     }
 }

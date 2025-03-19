@@ -10,21 +10,22 @@ namespace AgroVA.Application.DTOs
     {
         [Required(ErrorMessage = AnnotationMessage.RequiredObservation)]
         [MaxLength(150, ErrorMessage = AnnotationMessage.LongObservation)]
-        [DisplayName("Observation")]
+        [DisplayName("Texto")]
         public string Observation { get; set; }
 
         [Required(ErrorMessage = AnnotationMessage.RequiredTimestamp)]
-        [Column(TypeName = "datetime")]
         [Timestamp]
-        [DisplayName("Timestamp")]
-        public DateTime Timestamp { get; set; }
+        [DisplayName("Data")]
+        public DateOnly Timestamp { get; set; }
 
-        [DisplayName("Farmer")]
         public int FarmerId { get; set; }
-        public Farmer Farmer { get; set; }
+        
+        [DisplayName("Produtor")]
+        public Farmer? Farmer { get; set; }
 
-        [DisplayName("Harvest")]
         public int HarvestId { get; set; }
-        public Harvest Harvest { get; set; }
+
+        [DisplayName("Safra")]
+        public Harvest? Harvest { get; set; }
     }
 }

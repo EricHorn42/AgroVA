@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Bem-vindo ao AgroVA</h2>
+<p>Escolha uma opção para gerenciar os dados:</p>
+
+<div class="btn-group mt-3">
+    <a asp-controller="Annotations" asp-action="Index" class="btn btn-primary">Gerenciar Anotações</a>
+    <a asp-controller="Farmers" asp-action="Index" class="btn btn-success">Gerenciar Agricultores</a>
+    <a asp-controller="Harvests" asp-action="Index" class="btn btn-primary">Gerenciar Safras</a>
+    <a asp-controller="HuskPrices" asp-action="Index" class="btn btn-success">Gerenciar Preços de Casca</a>
+    <a asp-controller="Loads" asp-action="Index" class="btn btn-primary">Gerenciar Cargas</a>
+    <a asp-controller="Promissories" asp-action="Index" class="btn btn-success">Gerenciar Promissórias</a>
+    <a asp-controller="Receipts" asp-action="Index" class="btn btn-primary">Gerenciar Notas</a>
+    <a asp-controller="Rents" asp-action="Index" class="btn btn-success">Gerenciar Empréstimos</a>    
+</div>

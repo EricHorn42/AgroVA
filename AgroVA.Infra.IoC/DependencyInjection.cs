@@ -22,7 +22,7 @@ namespace AgroVA.Infra.IoC
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    configuration.GetConnectionString("DefaultConnection"),
+                    configuration.GetConnectionString("SQLSERVERWINDOWS"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
                     ));
 

@@ -45,7 +45,7 @@ namespace AgroVA.Infra.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Observation = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Timestamp = table.Column<DateOnly>(type: "date", nullable: false),
                     FarmerId = table.Column<int>(type: "int", nullable: false),
                     HarvestId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -72,7 +72,7 @@ namespace AgroVA.Infra.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Timestamp = table.Column<DateOnly>(type: "date", nullable: false),
                     Percent = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(7,2)", precision: 7, scale: 2, nullable: false),
                     HarvestId = table.Column<int>(type: "int", nullable: false)
@@ -94,12 +94,12 @@ namespace AgroVA.Infra.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Timestamp = table.Column<DateOnly>(type: "date", nullable: false),
                     GreenWeight = table.Column<decimal>(type: "decimal(8,3)", precision: 8, scale: 3, nullable: true),
                     DryWeight = table.Column<decimal>(type: "decimal(8,3)", precision: 8, scale: 3, nullable: true),
                     Register = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: true),
-                    WholePercent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    WholePercent = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: true),
                     Invoice = table.Column<long>(type: "bigint", nullable: false),
                     FarmerId = table.Column<int>(type: "int", nullable: false),
                     HarvestId = table.Column<int>(type: "int", nullable: false)
@@ -127,7 +127,7 @@ namespace AgroVA.Infra.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Timestamp = table.Column<DateOnly>(type: "date", nullable: false),
                     Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     FarmerId = table.Column<int>(type: "int", nullable: false),
                     HarvestId = table.Column<int>(type: "int", nullable: false)

@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace AgroVA.Domain.Interfaces
 {
     public interface IRentRepository : IRepositoryBase<Rent>
-    {
-        Task<Rent> GetFarmerByIdAsync(int? id);
+    {        
     }
 }

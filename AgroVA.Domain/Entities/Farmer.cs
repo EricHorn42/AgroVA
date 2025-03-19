@@ -12,7 +12,7 @@ namespace AgroVA.Domain.Entities
 
         public Farmer(int id, string name, string phone)
         {
-            DomainExceptionValidation.When(id < 1, FarmerMessage.InvalidId);
+            DomainExceptionValidation.When(id < 0, FarmerMessage.InvalidId);
             Id = id;
             ValidateDomain(name, phone);
         }

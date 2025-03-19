@@ -10,6 +10,6 @@ namespace AgroVA.Application.Services
     {
         public AnnotationService(IAnnotationRepository repository, IMapper mapper) : base(repository, mapper)
         {
-        }
+        }        
     }
 }

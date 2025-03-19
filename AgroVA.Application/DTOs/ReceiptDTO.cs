@@ -10,22 +10,24 @@ namespace AgroVA.Application.DTOs
     {
         [Required(ErrorMessage = ReceiptMessage.RequiredTimestamp)]
         [Timestamp]
-        [DisplayName("Timestamp")]
-        public DateTime Timestamp { get; set; }
+        [DisplayName("Data")]
+        public DateOnly Timestamp { get; set; }
 
         [Required(ErrorMessage = ReceiptMessage.RequiredValue)]
         [Column(TypeName = "decimal(10,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [DataType(DataType.Currency)]
-        [DisplayName("Value")]
+        [DisplayName("Valor")]
         public decimal Value { get; set; }
 
-        [DisplayName("Farmer")]
         public int FarmerId { get; set; }
-        public Farmer Farmer { get; set; }
 
-        [DisplayName("Harvest")]
+        [DisplayName("Produtor")]
+        public Farmer? Farmer { get; set; }
+
         public int HarvestId { get; set; }
-        public Harvest Harvest { get; set; }
+
+        [DisplayName("Safra")]
+        public Harvest? Harvest { get; set; }
     }
 }

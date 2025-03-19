@@ -11,10 +11,20 @@ namespace AgroVA.Infra.Data.Repositories
         {
         }
 
-        public async Task<Rent> GetFarmerByIdAsync(int? id)
+        public async override Task<IEnumerable<Rent>> GetAllAsync()
         {
-            //eager loading
-            return await _context.Rents.Include(f => f.Farmer).SingleOrDefaultAsync(r => r.Id == id);            
+            return await _context.Set<Rent>()
+                .Include(f => f.Farmer)
+                .Include(h => h.Harvest)
+                .ToListAsync();
+        }
+
+        public async override Task<Rent> GetByIdAsync(int? id)
+        {
+            return await _context.Set<Rent>()
+                .Include(f => f.Farmer)
+                .Include(h => h.Harvest)
+                .FirstOrDefaultAsync(r => r.Id == id);
         }
     }
 }

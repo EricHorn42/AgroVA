@@ -5,7 +5,7 @@ namespace AgroVA.Domain.Entities
 {
     public sealed class Load : EntityBase
     {
-        public DateTime Timestamp { get; private set; }
+        public DateOnly Timestamp { get; private set; }
         public decimal? GreenWeight { get; private set; }
         public decimal? DryWeight { get; private set; }
         public int Register { get; private set; }
@@ -19,28 +19,28 @@ namespace AgroVA.Domain.Entities
         public int HarvestId { get; set; }
         public Harvest Harvest { get; set; }
 
-        public Load(int id, DateTime timestamp, decimal? greenWeight, decimal? dryWeight, int register, decimal? price, decimal? wholePercent, long invoice)
+        public Load(int id, DateOnly timestamp, decimal? greenWeight, decimal? dryWeight, int register, decimal? price, decimal? wholePercent, long invoice)
         {
-            DomainExceptionValidation.When(id < 1, LoadMessage.InvalidId);
+            DomainExceptionValidation.When(id < 0, LoadMessage.InvalidId);
             Id = id;
             ValidateDomain(timestamp, greenWeight, dryWeight, register, price, wholePercent, invoice);
         }
 
-        public Load(DateTime timestamp, decimal? greenWeight, decimal? dryWeight, int register, decimal? price, decimal? wholePercent, long invoice)
+        public Load(DateOnly timestamp, decimal? greenWeight, decimal? dryWeight, int register, decimal? price, decimal? wholePercent, long invoice)
         {
             ValidateDomain(timestamp, greenWeight, dryWeight, register, price, wholePercent, invoice);
         }
 
-        public void Update(DateTime timestamp, decimal? greenWeight, decimal? dryWeight, int register, decimal? price, decimal wholePercent, long invoice, int farmerId, int harvestId)
+        public void Update(DateOnly timestamp, decimal? greenWeight, decimal? dryWeight, int register, decimal? price, decimal wholePercent, long invoice, int farmerId, int harvestId)
         {
             ValidateDomain(timestamp, greenWeight, dryWeight, register, price, wholePercent, invoice);
             FarmerId = farmerId;
             HarvestId = harvestId;
         }
 
-        public void ValidateDomain(DateTime timestamp, decimal? greenWeight, decimal? dryWeight, int register, decimal? price, decimal? wholePercent, long invoice)
+        public void ValidateDomain(DateOnly timestamp, decimal? greenWeight, decimal? dryWeight, int register, decimal? price, decimal? wholePercent, long invoice)
         {
-            DomainExceptionValidation.When(timestamp == DateTime.MinValue, LoadMessage.InvalidTimestamp);
+            DomainExceptionValidation.When(timestamp == DateOnly.MinValue, LoadMessage.InvalidTimestamp);
 
             if (greenWeight != null)
                 DomainExceptionValidation.When(greenWeight < 0, LoadMessage.InvalidGreenWeight);

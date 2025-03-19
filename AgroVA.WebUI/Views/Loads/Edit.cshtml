@@ -1,0 +1,74 @@
+﻿@model AgroVA.Application.DTOs.LoadDTO
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Load</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Timestamp" class="control-label"></label>
+                <input asp-for="Timestamp" class="form-control" />
+                <span asp-validation-for="Timestamp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GreenWeight" class="control-label"></label>
+                <input asp-for="GreenWeight" class="form-control" />
+                <span asp-validation-for="GreenWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DryWeight" class="control-label"></label>
+                <input asp-for="DryWeight" class="form-control" />
+                <span asp-validation-for="DryWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Register" class="control-label"></label>
+                <input asp-for="Register" class="form-control" />
+                <span asp-validation-for="Register" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WholePercent" class="control-label"></label>
+                <input asp-for="WholePercent" class="form-control" />
+                <span asp-validation-for="WholePercent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Invoice" class="control-label"></label>
+                <input asp-for="Invoice" class="form-control" />
+                <span asp-validation-for="Invoice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerId" class="control-label"></label>
+                <select asp-for="FarmerId" class="form-control" asp-items="ViewBag.FarmerId"></select>
+                <span asp-validation-for="FarmerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HarvestId" class="control-label"></label>
+                <select asp-for="HarvestId" class="form-control" asp-items="ViewBag.HarvestId"></select>
+                <span asp-validation-for="HarvestId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

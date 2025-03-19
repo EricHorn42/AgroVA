@@ -9,7 +9,7 @@ namespace AgroVA.Domain.Entities
 
         public Harvest(int id, int year)
         {
-            DomainExceptionValidation.When(id < 1, HarvestMessage.InvalidId);
+            DomainExceptionValidation.When(id < 0, HarvestMessage.InvalidId);
             Id = id;
             ValidateDomain(year);
         }

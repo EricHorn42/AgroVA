@@ -19,7 +19,7 @@ namespace AgroVA.Domain.Entities
 
         public Rent(int id, string? person, decimal percent, decimal value, string? annotation)
         {
-            DomainExceptionValidation.When(id < 1, RentMessage.InvalidId);
+            DomainExceptionValidation.When(id < 0, RentMessage.InvalidId);
             Id = id;
             ValidateDomain(person, percent, value, annotation);
         }

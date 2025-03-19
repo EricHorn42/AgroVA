@@ -5,7 +5,7 @@ namespace AgroVA.Domain.Entities
 {
     public sealed class Promissory : EntityBase
     {
-        public DateTime Timestamp { get; private set; }
+        public DateOnly Timestamp { get; private set; }
         public decimal Value { get; private set; }
 
         public int FarmerId { get; set; }
@@ -14,28 +14,28 @@ namespace AgroVA.Domain.Entities
         public int HarvestId { get; set; }
         public Harvest Harvest { get; set; }
 
-        public Promissory(int id, DateTime timestamp, decimal value)
+        public Promissory(int id, DateOnly timestamp, decimal value)
         {
-            DomainExceptionValidation.When(id < 1, PromissoryMessage.InvalidId);
+            DomainExceptionValidation.When(id < 0, PromissoryMessage.InvalidId);
             Id = id;
             ValidateDomain(timestamp, value);
         }
 
-        public Promissory(DateTime timestamp, decimal value)
+        public Promissory(DateOnly timestamp, decimal value)
         {
             ValidateDomain(timestamp, value);
         }
 
-        public void Update(DateTime timestamp, decimal value, int farmerId, int harvestId)
+        public void Update(DateOnly timestamp, decimal value, int farmerId, int harvestId)
         {
             ValidateDomain(timestamp, value);
             FarmerId = farmerId;
             HarvestId = harvestId;
         }
 
-        public void ValidateDomain(DateTime timestamp, decimal value)
+        public void ValidateDomain(DateOnly timestamp, decimal value)
         {
-            DomainExceptionValidation.When(timestamp == DateTime.MinValue, PromissoryMessage.InvalidTimestamp);
+            DomainExceptionValidation.When(timestamp == DateOnly.MinValue, PromissoryMessage.InvalidTimestamp);
             DomainExceptionValidation.When(value < 0, PromissoryMessage.InvalidValue);
             Timestamp = timestamp;
             Value = value;
