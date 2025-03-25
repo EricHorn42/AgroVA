@@ -8,32 +8,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Harvests.Handlers
+namespace AgroVA.Application.CQRS.Harvests.Handlers;
+
+public class HarvestAddCommandHandler : IRequestHandler<HarvestAddCommand, Harvest>
 {
-    public class HarvestAddCommandHandler : IRequestHandler<HarvestAddCommand, Harvest>
+    private readonly IHarvestRepository _repository;
+
+    public HarvestAddCommandHandler(IHarvestRepository repository)
     {
-        private readonly IHarvestRepository _repository;
+        _repository = repository;
+    }
 
-        public HarvestAddCommandHandler(IHarvestRepository repository)
-        {
-            _repository = repository;
-        }
+    public async Task<Harvest> Handle(HarvestAddCommand request, CancellationToken cancellationToken)
+    {
+        //var annotation = new Harvest();
 
-        public async Task<Harvest> Handle(HarvestAddCommand request, CancellationToken cancellationToken)
-        {
-            //var annotation = new Harvest();
-
-            //if (annotation == null)
-            //{
-            //    throw new ApplicationException("Error creating entity");
-            //}
-            //else
-            //{
-            //    annotation.FarmerId = request.FarmerId;
-            //    annotation.HarvestId = request.HarvestId;
-            //    return await _repository.AddAsync(annotation);
-            //}
-            return null; 
-        }
+        //if (annotation == null)
+        //{
+        //    throw new ApplicationException("Error creating entity");
+        //}
+        //else
+        //{
+        //    annotation.FarmerId = request.FarmerId;
+        //    annotation.HarvestId = request.HarvestId;
+        //    return await _repository.AddAsync(annotation);
+        //}
+        return null; 
     }
 }

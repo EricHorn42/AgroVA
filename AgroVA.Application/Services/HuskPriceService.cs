@@ -4,12 +4,11 @@ using AgroVA.Domain.Entities;
 using AgroVA.Domain.Interfaces;
 using AutoMapper;
 
-namespace AgroVA.Application.Services
+namespace AgroVA.Application.Services;
+
+public class HuskPriceService : ServiceBase<HuskPriceDTO, HuskPrice, IHuskPriceRepository>, IHuskPriceService
 {
-    public class HuskPriceService : ServiceBase<HuskPriceDTO, HuskPrice, IHuskPriceRepository>, IHuskPriceService
+    public HuskPriceService(IHuskPriceRepository repository, IMapper mapper) : base(repository, mapper)
     {
-        public HuskPriceService(IHuskPriceRepository repository, IMapper mapper) : base(repository, mapper)
-        {
-        }
     }
 }

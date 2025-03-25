@@ -1,6 +1,5 @@
-﻿namespace AgroVA.Domain.Tests
+﻿namespace AgroVA.Domain.Tests;
+
+class AnnotationUnitTest1
 {
-    class AnnotationUnitTest1
-    {
-    }
 }

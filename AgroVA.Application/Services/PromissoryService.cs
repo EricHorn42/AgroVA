@@ -4,12 +4,11 @@ using AgroVA.Domain.Entities;
 using AgroVA.Domain.Interfaces;
 using AutoMapper;
 
-namespace AgroVA.Application.Services
+namespace AgroVA.Application.Services;
+
+public class PromissoryService : ServiceBase<PromissoryDTO, Promissory, IPromissoryRepository>, IPromissoryService
 {
-    public class PromissoryService : ServiceBase<PromissoryDTO, Promissory, IPromissoryRepository>, IPromissoryService
+    public PromissoryService(IPromissoryRepository repository, IMapper mapper) : base(repository, mapper)
     {
-        public PromissoryService(IPromissoryRepository repository, IMapper mapper) : base(repository, mapper)
-        {
-        }
     }
 }

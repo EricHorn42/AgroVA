@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Domain.Entities
-{
-    public abstract class EntityBase
-    {
-        public int Id { get; protected set; }
+namespace AgroVA.Domain.Entities;
 
-    }
+public abstract class EntityBase
+{
+    public int Id { get; protected set; }
+
 }

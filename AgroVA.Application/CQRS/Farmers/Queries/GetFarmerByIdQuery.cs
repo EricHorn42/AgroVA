@@ -6,15 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Farmers.Queries
-{
-    public class GetFarmerByIdQuery : IRequest<Farmer>
-    {
-        public int Id { get; set; }
+namespace AgroVA.Application.CQRS.Farmers.Queries;
 
-        public GetFarmerByIdQuery(int id)
-        {
-            Id = id;
-        }
+public class GetFarmerByIdQuery : IRequest<Farmer>
+{
+    public int Id { get; set; }
+
+    public GetFarmerByIdQuery(int id)
+    {
+        Id = id;
     }
 }

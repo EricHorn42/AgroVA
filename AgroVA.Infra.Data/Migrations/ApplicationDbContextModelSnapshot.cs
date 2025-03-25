@@ -8,417 +8,665 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AgroVA.Infra.Data.Migrations
+namespace AgroVA.Infra.Data.Migrations;
+
+[DbContext(typeof(ApplicationDbContext))]
+partial class ApplicationDbContextModelSnapshot : ModelSnapshot
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    protected override void BuildModel(ModelBuilder modelBuilder)
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.2")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+        modelBuilder
+            .HasAnnotation("ProductVersion", "9.0.2")
+            .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+        SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Annotation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+        modelBuilder.Entity("AgroVA.Domain.Entities.Annotation", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FarmerId")
-                        .HasColumnType("int");
+                b.Property<int>("FarmerId")
+                    .HasColumnType("int");
 
-                    b.Property<int>("HarvestId")
-                        .HasColumnType("int");
+                b.Property<int>("HarvestId")
+                    .HasColumnType("int");
 
-                    b.Property<string>("Observation")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                b.Property<string>("Observation")
+                    .IsRequired()
+                    .HasMaxLength(150)
+                    .HasColumnType("nvarchar(150)");
 
-                    b.Property<DateOnly>("Timestamp")
-                        .HasColumnType("date");
+                b.Property<DateOnly>("Timestamp")
+                    .HasColumnType("date");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("FarmerId");
+                b.HasIndex("FarmerId");
 
-                    b.HasIndex("HarvestId");
+                b.HasIndex("HarvestId");
 
-                    b.ToTable("Annotations");
-                });
+                b.ToTable("Annotations");
+            });
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Farmer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+        modelBuilder.Entity("AgroVA.Domain.Entities.Farmer", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasMaxLength(150)
+                    .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
+                b.Property<string>("Phone")
+                    .IsRequired()
+                    .HasMaxLength(13)
+                    .HasColumnType("nvarchar(13)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Farmers");
-                });
+                b.ToTable("Farmers");
+            });
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Harvest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+        modelBuilder.Entity("AgroVA.Domain.Entities.Harvest", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
+                b.Property<int>("Year")
+                    .HasColumnType("int");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Harvests");
-                });
+                b.ToTable("Harvests");
+            });
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.HuskPrice", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+        modelBuilder.Entity("AgroVA.Domain.Entities.HuskPrice", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("HarvestId")
-                        .HasColumnType("int");
+                b.Property<int>("HarvestId")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("Percent")
-                        .HasPrecision(3, 2)
-                        .HasColumnType("decimal(3,2)");
+                b.Property<decimal>("Percent")
+                    .HasPrecision(3, 2)
+                    .HasColumnType("decimal(3,2)");
 
-                    b.Property<decimal>("Price")
-                        .HasPrecision(7, 2)
-                        .HasColumnType("decimal(7,2)");
+                b.Property<decimal>("Price")
+                    .HasPrecision(7, 2)
+                    .HasColumnType("decimal(7,2)");
 
-                    b.Property<DateOnly>("Timestamp")
-                        .HasColumnType("date");
+                b.Property<DateOnly>("Timestamp")
+                    .HasColumnType("date");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("HarvestId");
+                b.HasIndex("HarvestId");
 
-                    b.ToTable("HuskPrices");
-                });
+                b.ToTable("HuskPrices");
+            });
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Load", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+        modelBuilder.Entity("AgroVA.Domain.Entities.Load", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<decimal?>("DryWeight")
-                        .HasPrecision(8, 3)
-                        .HasColumnType("decimal(8,3)");
+                b.Property<decimal?>("DryWeight")
+                    .HasPrecision(8, 3)
+                    .HasColumnType("decimal(8,3)");
 
-                    b.Property<int>("FarmerId")
-                        .HasColumnType("int");
+                b.Property<int>("FarmerId")
+                    .HasColumnType("int");
 
-                    b.Property<decimal?>("GreenWeight")
-                        .HasPrecision(8, 3)
-                        .HasColumnType("decimal(8,3)");
+                b.Property<decimal?>("GreenWeight")
+                    .HasPrecision(8, 3)
+                    .HasColumnType("decimal(8,3)");
 
-                    b.Property<int>("HarvestId")
-                        .HasColumnType("int");
+                b.Property<int>("HarvestId")
+                    .HasColumnType("int");
 
-                    b.Property<long>("Invoice")
-                        .HasColumnType("bigint");
+                b.Property<long>("Invoice")
+                    .HasColumnType("bigint");
 
-                    b.Property<decimal?>("Price")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                b.Property<decimal?>("Price")
+                    .HasPrecision(10, 2)
+                    .HasColumnType("decimal(10,2)");
 
-                    b.Property<int>("Register")
-                        .HasColumnType("int");
+                b.Property<int>("Register")
+                    .HasColumnType("int");
 
-                    b.Property<DateOnly>("Timestamp")
-                        .HasColumnType("date");
+                b.Property<DateOnly>("Timestamp")
+                    .HasColumnType("date");
 
-                    b.Property<decimal?>("WholePercent")
-                        .HasPrecision(3, 2)
-                        .HasColumnType("decimal(3,2)");
+                b.Property<decimal?>("WholePercent")
+                    .HasPrecision(3, 2)
+                    .HasColumnType("decimal(3,2)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("FarmerId");
+                b.HasIndex("FarmerId");
 
-                    b.HasIndex("HarvestId");
+                b.HasIndex("HarvestId");
 
-                    b.ToTable("Loads");
-                });
+                b.ToTable("Loads");
+            });
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Promissory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+        modelBuilder.Entity("AgroVA.Domain.Entities.Promissory", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FarmerId")
-                        .HasColumnType("int");
+                b.Property<int>("FarmerId")
+                    .HasColumnType("int");
 
-                    b.Property<int>("HarvestId")
-                        .HasColumnType("int");
+                b.Property<int>("HarvestId")
+                    .HasColumnType("int");
 
-                    b.Property<DateOnly>("Timestamp")
-                        .HasColumnType("date");
+                b.Property<DateOnly>("Timestamp")
+                    .HasColumnType("date");
 
-                    b.Property<decimal>("Value")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<decimal>("Value")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("FarmerId");
+                b.HasIndex("FarmerId");
 
-                    b.HasIndex("HarvestId");
+                b.HasIndex("HarvestId");
 
-                    b.ToTable("Promissories");
-                });
+                b.ToTable("Promissories");
+            });
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Receipt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+        modelBuilder.Entity("AgroVA.Domain.Entities.Receipt", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FarmerId")
-                        .HasColumnType("int");
+                b.Property<int>("FarmerId")
+                    .HasColumnType("int");
 
-                    b.Property<int>("HarvestId")
-                        .HasColumnType("int");
+                b.Property<int>("HarvestId")
+                    .HasColumnType("int");
 
-                    b.Property<DateOnly>("Timestamp")
-                        .HasColumnType("date");
+                b.Property<DateOnly>("Timestamp")
+                    .HasColumnType("date");
 
-                    b.Property<decimal>("Value")
-                        .HasColumnType("decimal(18,2)");
+                b.Property<decimal>("Value")
+                    .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("FarmerId");
+                b.HasIndex("FarmerId");
 
-                    b.HasIndex("HarvestId");
+                b.HasIndex("HarvestId");
 
-                    b.ToTable("Receipts");
-                });
+                b.ToTable("Receipts");
+            });
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Rent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+        modelBuilder.Entity("AgroVA.Domain.Entities.Rent", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Annotation")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                b.Property<string>("Annotation")
+                    .HasMaxLength(500)
+                    .HasColumnType("nvarchar(500)");
 
-                    b.Property<int>("FarmerId")
-                        .HasColumnType("int");
+                b.Property<int>("FarmerId")
+                    .HasColumnType("int");
 
-                    b.Property<int?>("FarmerId1")
-                        .HasColumnType("int");
+                b.Property<int?>("FarmerId1")
+                    .HasColumnType("int");
 
-                    b.Property<int>("HarvestId")
-                        .HasColumnType("int");
+                b.Property<int>("HarvestId")
+                    .HasColumnType("int");
 
-                    b.Property<int?>("HarvestId1")
-                        .HasColumnType("int");
+                b.Property<int?>("HarvestId1")
+                    .HasColumnType("int");
 
-                    b.Property<decimal>("Percent")
-                        .HasPrecision(3, 2)
-                        .HasColumnType("decimal(3,2)");
+                b.Property<decimal>("Percent")
+                    .HasPrecision(3, 2)
+                    .HasColumnType("decimal(3,2)");
 
-                    b.Property<string>("Person")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                b.Property<string>("Person")
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .HasColumnType("nvarchar(200)");
 
-                    b.Property<decimal>("Value")
-                        .HasPrecision(10, 2)
-                        .HasColumnType("decimal(10,2)");
+                b.Property<decimal>("Value")
+                    .HasPrecision(10, 2)
+                    .HasColumnType("decimal(10,2)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("FarmerId");
+                b.HasIndex("FarmerId");
 
-                    b.HasIndex("FarmerId1");
+                b.HasIndex("FarmerId1");
 
-                    b.HasIndex("HarvestId");
+                b.HasIndex("HarvestId");
 
-                    b.HasIndex("HarvestId1");
+                b.HasIndex("HarvestId1");
 
-                    b.ToTable("Rents");
-                });
+                b.ToTable("Rents");
+            });
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Annotation", b =>
-                {
-                    b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
-                        .WithMany("Annotations")
-                        .HasForeignKey("FarmerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+        modelBuilder.Entity("AgroVA.Infra.Data.Identity.ApplicationUser", b =>
+            {
+                b.Property<string>("Id")
+                    .HasColumnType("nvarchar(450)");
 
-                    b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
-                        .WithMany("Annotations")
-                        .HasForeignKey("HarvestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.Property<int>("AccessFailedCount")
+                    .HasColumnType("int");
 
-                    b.Navigation("Farmer");
+                b.Property<string>("ConcurrencyStamp")
+                    .IsConcurrencyToken()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Navigation("Harvest");
-                });
+                b.Property<string>("Email")
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.HuskPrice", b =>
-                {
-                    b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
-                        .WithMany("HuskPrices")
-                        .HasForeignKey("HarvestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.Property<bool>("EmailConfirmed")
+                    .HasColumnType("bit");
 
-                    b.Navigation("Harvest");
-                });
+                b.Property<bool>("LockoutEnabled")
+                    .HasColumnType("bit");
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Load", b =>
-                {
-                    b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
-                        .WithMany("Loads")
-                        .HasForeignKey("FarmerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.Property<DateTimeOffset?>("LockoutEnd")
+                    .HasColumnType("datetimeoffset");
 
-                    b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
-                        .WithMany("Loads")
-                        .HasForeignKey("HarvestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.Property<string>("NormalizedEmail")
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-                    b.Navigation("Farmer");
+                b.Property<string>("NormalizedUserName")
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-                    b.Navigation("Harvest");
-                });
+                b.Property<string>("PasswordHash")
+                    .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Promissory", b =>
-                {
-                    b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
-                        .WithMany("Promissories")
-                        .HasForeignKey("FarmerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.Property<string>("PhoneNumber")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
-                        .WithMany("Promissories")
-                        .HasForeignKey("HarvestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.Property<bool>("PhoneNumberConfirmed")
+                    .HasColumnType("bit");
 
-                    b.Navigation("Farmer");
+                b.Property<string>("SecurityStamp")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Navigation("Harvest");
-                });
+                b.Property<bool>("TwoFactorEnabled")
+                    .HasColumnType("bit");
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Receipt", b =>
-                {
-                    b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
-                        .WithMany("Receipts")
-                        .HasForeignKey("FarmerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.Property<string>("UserName")
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-                    b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
-                        .WithMany("Receipts")
-                        .HasForeignKey("HarvestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.HasKey("Id");
 
-                    b.Navigation("Farmer");
+                b.HasIndex("NormalizedEmail")
+                    .HasDatabaseName("EmailIndex");
 
-                    b.Navigation("Harvest");
-                });
+                b.HasIndex("NormalizedUserName")
+                    .IsUnique()
+                    .HasDatabaseName("UserNameIndex")
+                    .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Rent", b =>
-                {
-                    b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
-                        .WithMany()
-                        .HasForeignKey("FarmerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.ToTable("AspNetUsers", (string)null);
+            });
 
-                    b.HasOne("AgroVA.Domain.Entities.Farmer", null)
-                        .WithMany("Rents")
-                        .HasForeignKey("FarmerId1");
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            {
+                b.Property<string>("Id")
+                    .HasColumnType("nvarchar(450)");
 
-                    b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
-                        .WithMany()
-                        .HasForeignKey("HarvestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                b.Property<string>("ConcurrencyStamp")
+                    .IsConcurrencyToken()
+                    .HasColumnType("nvarchar(max)");
 
-                    b.HasOne("AgroVA.Domain.Entities.Harvest", null)
-                        .WithMany("Rents")
-                        .HasForeignKey("HarvestId1");
+                b.Property<string>("Name")
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-                    b.Navigation("Farmer");
+                b.Property<string>("NormalizedName")
+                    .HasMaxLength(256)
+                    .HasColumnType("nvarchar(256)");
 
-                    b.Navigation("Harvest");
-                });
+                b.HasKey("Id");
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Farmer", b =>
-                {
-                    b.Navigation("Annotations");
+                b.HasIndex("NormalizedName")
+                    .IsUnique()
+                    .HasDatabaseName("RoleNameIndex")
+                    .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.Navigation("Loads");
+                b.ToTable("AspNetRoles", (string)null);
+            });
 
-                    b.Navigation("Promissories");
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
 
-                    b.Navigation("Receipts");
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Navigation("Rents");
-                });
+                b.Property<string>("ClaimType")
+                    .HasColumnType("nvarchar(max)");
 
-            modelBuilder.Entity("AgroVA.Domain.Entities.Harvest", b =>
-                {
-                    b.Navigation("Annotations");
+                b.Property<string>("ClaimValue")
+                    .HasColumnType("nvarchar(max)");
 
-                    b.Navigation("HuskPrices");
+                b.Property<string>("RoleId")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(450)");
 
-                    b.Navigation("Loads");
+                b.HasKey("Id");
 
-                    b.Navigation("Promissories");
+                b.HasIndex("RoleId");
 
-                    b.Navigation("Receipts");
+                b.ToTable("AspNetRoleClaims", (string)null);
+            });
 
-                    b.Navigation("Rents");
-                });
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<string>("ClaimType")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("ClaimValue")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("UserId")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(450)");
+
+                b.HasKey("Id");
+
+                b.HasIndex("UserId");
+
+                b.ToTable("AspNetUserClaims", (string)null);
+            });
+
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            {
+                b.Property<string>("LoginProvider")
+                    .HasColumnType("nvarchar(450)");
+
+                b.Property<string>("ProviderKey")
+                    .HasColumnType("nvarchar(450)");
+
+                b.Property<string>("ProviderDisplayName")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("UserId")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(450)");
+
+                b.HasKey("LoginProvider", "ProviderKey");
+
+                b.HasIndex("UserId");
+
+                b.ToTable("AspNetUserLogins", (string)null);
+            });
+
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            {
+                b.Property<string>("UserId")
+                    .HasColumnType("nvarchar(450)");
+
+                b.Property<string>("RoleId")
+                    .HasColumnType("nvarchar(450)");
+
+                b.HasKey("UserId", "RoleId");
+
+                b.HasIndex("RoleId");
+
+                b.ToTable("AspNetUserRoles", (string)null);
+            });
+
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            {
+                b.Property<string>("UserId")
+                    .HasColumnType("nvarchar(450)");
+
+                b.Property<string>("LoginProvider")
+                    .HasColumnType("nvarchar(450)");
+
+                b.Property<string>("Name")
+                    .HasColumnType("nvarchar(450)");
+
+                b.Property<string>("Value")
+                    .HasColumnType("nvarchar(max)");
+
+                b.HasKey("UserId", "LoginProvider", "Name");
+
+                b.ToTable("AspNetUserTokens", (string)null);
+            });
+
+        modelBuilder.Entity("AgroVA.Domain.Entities.Annotation", b =>
+            {
+                b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
+                    .WithMany("Annotations")
+                    .HasForeignKey("FarmerId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
+                    .WithMany("Annotations")
+                    .HasForeignKey("HarvestId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("Farmer");
+
+                b.Navigation("Harvest");
+            });
+
+        modelBuilder.Entity("AgroVA.Domain.Entities.HuskPrice", b =>
+            {
+                b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
+                    .WithMany("HuskPrices")
+                    .HasForeignKey("HarvestId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("Harvest");
+            });
+
+        modelBuilder.Entity("AgroVA.Domain.Entities.Load", b =>
+            {
+                b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
+                    .WithMany("Loads")
+                    .HasForeignKey("FarmerId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
+                    .WithMany("Loads")
+                    .HasForeignKey("HarvestId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("Farmer");
+
+                b.Navigation("Harvest");
+            });
+
+        modelBuilder.Entity("AgroVA.Domain.Entities.Promissory", b =>
+            {
+                b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
+                    .WithMany("Promissories")
+                    .HasForeignKey("FarmerId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
+                    .WithMany("Promissories")
+                    .HasForeignKey("HarvestId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("Farmer");
+
+                b.Navigation("Harvest");
+            });
+
+        modelBuilder.Entity("AgroVA.Domain.Entities.Receipt", b =>
+            {
+                b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
+                    .WithMany("Receipts")
+                    .HasForeignKey("FarmerId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
+                    .WithMany("Receipts")
+                    .HasForeignKey("HarvestId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("Farmer");
+
+                b.Navigation("Harvest");
+            });
+
+        modelBuilder.Entity("AgroVA.Domain.Entities.Rent", b =>
+            {
+                b.HasOne("AgroVA.Domain.Entities.Farmer", "Farmer")
+                    .WithMany()
+                    .HasForeignKey("FarmerId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("AgroVA.Domain.Entities.Farmer", null)
+                    .WithMany("Rents")
+                    .HasForeignKey("FarmerId1");
+
+                b.HasOne("AgroVA.Domain.Entities.Harvest", "Harvest")
+                    .WithMany()
+                    .HasForeignKey("HarvestId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("AgroVA.Domain.Entities.Harvest", null)
+                    .WithMany("Rents")
+                    .HasForeignKey("HarvestId1");
+
+                b.Navigation("Farmer");
+
+                b.Navigation("Harvest");
+            });
+
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            {
+                b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    .WithMany()
+                    .HasForeignKey("RoleId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
+
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            {
+                b.HasOne("AgroVA.Infra.Data.Identity.ApplicationUser", null)
+                    .WithMany()
+                    .HasForeignKey("UserId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
+
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            {
+                b.HasOne("AgroVA.Infra.Data.Identity.ApplicationUser", null)
+                    .WithMany()
+                    .HasForeignKey("UserId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
+
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            {
+                b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    .WithMany()
+                    .HasForeignKey("RoleId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.HasOne("AgroVA.Infra.Data.Identity.ApplicationUser", null)
+                    .WithMany()
+                    .HasForeignKey("UserId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
+
+        modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            {
+                b.HasOne("AgroVA.Infra.Data.Identity.ApplicationUser", null)
+                    .WithMany()
+                    .HasForeignKey("UserId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+            });
+
+        modelBuilder.Entity("AgroVA.Domain.Entities.Farmer", b =>
+            {
+                b.Navigation("Annotations");
+
+                b.Navigation("Loads");
+
+                b.Navigation("Promissories");
+
+                b.Navigation("Receipts");
+
+                b.Navigation("Rents");
+            });
+
+        modelBuilder.Entity("AgroVA.Domain.Entities.Harvest", b =>
+            {
+                b.Navigation("Annotations");
+
+                b.Navigation("HuskPrices");
+
+                b.Navigation("Loads");
+
+                b.Navigation("Promissories");
+
+                b.Navigation("Receipts");
+
+                b.Navigation("Rents");
+            });
 #pragma warning restore 612, 618
-        }
     }
 }

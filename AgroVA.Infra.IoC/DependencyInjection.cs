@@ -1,11 +1,15 @@
 ﻿using AgroVA.Application.Interfaces;
 using AgroVA.Application.Mappings;
 using AgroVA.Application.Services;
+using AgroVA.Domain.Account;
 using AgroVA.Domain.Interfaces;
 using AgroVA.Infra.Data.Context;
+using AgroVA.Infra.Data.Identity;
 using AgroVA.Infra.Data.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -14,40 +18,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Infra.IoC
+namespace AgroVA.Infra.IoC;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(
+                configuration.GetConnectionString("SQLSERVERWINDOWS"),
+                b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
+                ));
+
+        services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
+        services.ConfigureApplicationCookie(options =>
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    configuration.GetConnectionString("SQLSERVERWINDOWS"),
-                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
-                    ));
+            options.LoginPath = "/Account/Login";
+            options.AccessDeniedPath = "/Account/Login";
+        });
 
-            services.AddScoped<IAnnotationRepository, AnnotationRepository>();
-            services.AddScoped<IFarmerRepository, FarmerRepository>();
-            services.AddScoped<IHarvestRepository, HarvestRepository>();
-            services.AddScoped<IHuskPriceRepository, HuskPriceRepository>();
-            services.AddScoped<ILoadRepository, LoadRepository>();
-            services.AddScoped<IPromissoryRepository, PromissoryRepository>();
-            services.AddScoped<IReceiptRepository, ReceiptRepository>();
-            services.AddScoped<IRentRepository, RentRepository>();
+        services.AddScoped<IAnnotationRepository, AnnotationRepository>();
+        services.AddScoped<IFarmerRepository, FarmerRepository>();
+        services.AddScoped<IHarvestRepository, HarvestRepository>();
+        services.AddScoped<IHuskPriceRepository, HuskPriceRepository>();
+        services.AddScoped<ILoadRepository, LoadRepository>();
+        services.AddScoped<IPromissoryRepository, PromissoryRepository>();
+        services.AddScoped<IReceiptRepository, ReceiptRepository>();
+        services.AddScoped<IRentRepository, RentRepository>();
 
-            services.AddScoped<IAnnotationService, AnnotationService>();
-            services.AddScoped<IFarmerService, FarmerService>();
-            services.AddScoped<IHarvestService, HarvestService>();
-            services.AddScoped<IHuskPriceService, HuskPriceService>();
-            services.AddScoped<ILoadService, LoadService>();
-            services.AddScoped<IPromissoryService, PromissoryService>();
-            services.AddScoped<IReceiptService, ReceiptService>();
-            services.AddScoped<IRentService, RentService>();
+        services.AddScoped<IAnnotationService, AnnotationService>();
+        services.AddScoped<IFarmerService, FarmerService>();
+        services.AddScoped<IHarvestService, HarvestService>();
+        services.AddScoped<IHuskPriceService, HuskPriceService>();
+        services.AddScoped<ILoadService, LoadService>();
+        services.AddScoped<IPromissoryService, PromissoryService>();
+        services.AddScoped<IReceiptService, ReceiptService>();
+        services.AddScoped<IRentService, RentService>();
 
-            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+        services.AddScoped<IAuthenticate, AuthenticateService>();
+        services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
-            return services;
+        services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
-        }
+        return services;
+
     }
+
+    public static void MigrateDatabase(this DbContext context)
+    {
+        if ((context.Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
+        {
+            context.Database.Migrate();
+        }
+    }       
+
 }

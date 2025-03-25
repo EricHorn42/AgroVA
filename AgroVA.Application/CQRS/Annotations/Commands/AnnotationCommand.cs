@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Annotations.Commands
+namespace AgroVA.Application.CQRS.Annotations.Commands;
+
+public abstract class AnnotationCommand : IRequest<Annotation>
 {
-    public abstract class AnnotationCommand : IRequest<Annotation>
-    {
-        public string Observation { get; set; }
-        public DateOnly Timestamp { get; set; }
-        public int FarmerId { get; set; }
-        public int HarvestId { get; set; }
-    }
+    public string Observation { get; set; }
+    public DateOnly Timestamp { get; set; }
+    public int FarmerId { get; set; }
+    public int HarvestId { get; set; }
 }

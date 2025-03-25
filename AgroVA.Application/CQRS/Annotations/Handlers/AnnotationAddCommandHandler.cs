@@ -8,31 +8,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Annotations.Handlers
+namespace AgroVA.Application.CQRS.Annotations.Handlers;
+
+public class AnnotationAddCommandHandler : IRequestHandler<AnnotationAddCommand, Annotation>
 {
-    public class AnnotationAddCommandHandler : IRequestHandler<AnnotationAddCommand, Annotation>
+    private readonly IAnnotationRepository _repository;
+
+    public AnnotationAddCommandHandler(IAnnotationRepository repository)
     {
-        private readonly IAnnotationRepository _repository;
+        _repository = repository;
+    }
 
-        public AnnotationAddCommandHandler(IAnnotationRepository repository)
+    public async Task<Annotation> Handle(AnnotationAddCommand request, CancellationToken cancellationToken)
+    {
+        var annotation = new Annotation(request.Observation, request.Timestamp);
+
+        if (annotation == null)
         {
-            _repository = repository;
+            throw new ApplicationException("Error creating entity");
         }
-
-        public async Task<Annotation> Handle(AnnotationAddCommand request, CancellationToken cancellationToken)
+        else
         {
-            var annotation = new Annotation(request.Observation, request.Timestamp);
-
-            if (annotation == null)
-            {
-                throw new ApplicationException("Error creating entity");
-            }
-            else
-            {
-                annotation.FarmerId = request.FarmerId;
-                annotation.HarvestId = request.HarvestId;
-                return await _repository.AddAsync(annotation);
-            }
+            annotation.FarmerId = request.FarmerId;
+            annotation.HarvestId = request.HarvestId;
+            return await _repository.AddAsync(annotation);
         }
     }
 }

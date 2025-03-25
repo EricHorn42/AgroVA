@@ -1,8 +1,7 @@
 ﻿using AgroVA.Application.DTOs;
 
-namespace AgroVA.Application.Interfaces
+namespace AgroVA.Application.Interfaces;
+
+public interface IFarmerService : IServiceBase<FarmerDTO>
 {
-    public interface IFarmerService : IServiceBase<FarmerDTO>
-    {
-    }
 }

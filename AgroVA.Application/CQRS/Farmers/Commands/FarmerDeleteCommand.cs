@@ -6,15 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Farmers.Commands
-{
-    public class FarmerDeleteCommand : IRequest<Farmer>
-    {
-        public int Id { get; set; }
+namespace AgroVA.Application.CQRS.Farmers.Commands;
 
-        public FarmerDeleteCommand(int id)
-        {
-            Id = id;
-        }
+public class FarmerDeleteCommand : IRequest<Farmer>
+{
+    public int Id { get; set; }
+
+    public FarmerDeleteCommand(int id)
+    {
+        Id = id;
     }
 }

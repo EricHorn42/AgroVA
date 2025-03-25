@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Harvests.Commands
+namespace AgroVA.Application.CQRS.Harvests.Commands;
+
+public class HarvestUpdateCommand : HarvestCommand
 {
-    public class HarvestUpdateCommand : HarvestCommand
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

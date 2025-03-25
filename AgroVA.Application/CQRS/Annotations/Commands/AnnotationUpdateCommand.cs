@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Annotations.Commands
+namespace AgroVA.Application.CQRS.Annotations.Commands;
+
+public class AnnotationUpdateCommand : AnnotationCommand
 {
-    public class AnnotationUpdateCommand : AnnotationCommand
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

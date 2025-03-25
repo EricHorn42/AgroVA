@@ -1,8 +1,7 @@
 ﻿using AgroVA.Application.DTOs;
 
-namespace AgroVA.Application.Interfaces
+namespace AgroVA.Application.Interfaces;
+
+public interface IHuskPriceService : IServiceBase<HuskPriceDTO>
 {
-    public interface IHuskPriceService : IServiceBase<HuskPriceDTO>
-    {
-    }
 }

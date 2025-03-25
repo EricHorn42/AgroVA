@@ -6,10 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Harvests.Queries
-{
-    public class GetHarvestQuery : IRequest<IEnumerable<Harvest>>
-    {
+namespace AgroVA.Application.CQRS.Harvests.Queries;
 
-    }
+public class GetHarvestQuery : IRequest<IEnumerable<Harvest>>
+{
+
 }

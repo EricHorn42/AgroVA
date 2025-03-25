@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Domain.Interfaces
+namespace AgroVA.Domain.Interfaces;
+
+public interface IHuskPriceRepository : IRepositoryBase<HuskPrice>
 {
-    public interface IHuskPriceRepository : IRepositoryBase<HuskPrice>
-    {
-    }
 }

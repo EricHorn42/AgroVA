@@ -4,12 +4,11 @@ using AgroVA.Domain.Entities;
 using AgroVA.Domain.Interfaces;
 using AutoMapper;
 
-namespace AgroVA.Application.Services
+namespace AgroVA.Application.Services;
+
+public class HarvestService : ServiceBase<HarvestDTO, Harvest, IHarvestRepository>, IHarvestService
 {
-    public class HarvestService : ServiceBase<HarvestDTO, Harvest, IHarvestRepository>, IHarvestService
+    public HarvestService(IHarvestRepository repository, IMapper mapper) : base(repository, mapper)
     {
-        public HarvestService(IHarvestRepository repository, IMapper mapper) : base(repository, mapper)
-        {
-        }
     }
 }

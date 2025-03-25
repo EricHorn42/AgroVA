@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Domain.Interfaces
+namespace AgroVA.Domain.Interfaces;
+
+public interface IPromissoryRepository : IRepositoryBase<Promissory>
 {
-    public interface IPromissoryRepository : IRepositoryBase<Promissory>
-    {
-        
-    }
+    
 }

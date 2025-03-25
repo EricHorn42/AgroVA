@@ -2,16 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AgroVA.Infra.Data.EntitiesConfiguration
-{
-    public class HarvestConfiguration : IEntityTypeConfiguration<Harvest>
-    {
-        public void Configure(EntityTypeBuilder<Harvest> builder)
-        {
-            builder.HasKey(k => k.Id);
+namespace AgroVA.Infra.Data.EntitiesConfiguration;
 
-            builder.Property(p => p.Year)
-                .IsRequired();
-        }
+public class HarvestConfiguration : IEntityTypeConfiguration<Harvest>
+{
+    public void Configure(EntityTypeBuilder<Harvest> builder)
+    {
+        builder.HasKey(k => k.Id);
+
+        builder.Property(p => p.Year)
+            .IsRequired();
     }
 }

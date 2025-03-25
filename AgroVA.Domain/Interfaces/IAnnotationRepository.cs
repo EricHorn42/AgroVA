@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Domain.Interfaces
-{
-    public interface IAnnotationRepository : IRepositoryBase<Annotation>
-    { 
+namespace AgroVA.Domain.Interfaces;
 
-    }
+public interface IAnnotationRepository : IRepositoryBase<Annotation>
+{ 
+
 }

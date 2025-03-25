@@ -2,14 +2,11 @@
 using AgroVA.Application.Interfaces;
 using AgroVA.Domain.Interfaces;
 
-namespace AgroVA.WebUI.Controllers
+namespace AgroVA.WebUI.Controllers;
+
+public class FarmersController : ControllerBase<IFarmerService, FarmerDTO>
 {
-    public class FarmersController : ControllerBase<IFarmerService, FarmerDTO>
+    public FarmersController(IFarmerService service) : base(service)
     {
-        public FarmersController(IFarmerService service) : base(service)
-        {
-        }
     }
-
-
 }

@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Annotations.Handlers
+namespace AgroVA.Application.CQRS.Annotations.Handlers;
+
+class AnnotationDeleteCommandHandler
 {
-    class AnnotationDeleteCommandHandler
-    {
-    }
 }

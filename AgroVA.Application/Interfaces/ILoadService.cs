@@ -1,9 +1,8 @@
 ﻿using AgroVA.Application.DTOs;
 
-namespace AgroVA.Application.Interfaces
-{
-    public interface ILoadService : IServiceBase<LoadDTO>
-    {
+namespace AgroVA.Application.Interfaces;
 
-    }
+public interface ILoadService : IServiceBase<LoadDTO>
+{
+
 }

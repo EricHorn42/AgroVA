@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Domain.Interfaces
-{
-    public interface IRentRepository : IRepositoryBase<Rent>
-    {        
-    }
+namespace AgroVA.Domain.Interfaces;
+
+public interface IRentRepository : IRepositoryBase<Rent>
+{        
 }

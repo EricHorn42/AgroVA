@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.DTOs
+namespace AgroVA.Application.DTOs;
+
+public abstract class DTOBase
 {
-    public abstract class DTOBase
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

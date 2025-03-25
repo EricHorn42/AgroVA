@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AgroVA.Application.CQRS.Farmers.Commands
+namespace AgroVA.Application.CQRS.Farmers.Commands;
+
+public class FarmerUpdateCommand : FarmerCommand
 {
-    public class FarmerUpdateCommand : FarmerCommand
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

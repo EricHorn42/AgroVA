@@ -2,26 +2,25 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AgroVA.Infra.Data.EntitiesConfiguration
+namespace AgroVA.Infra.Data.EntitiesConfiguration;
+
+public class HuskPriceConfiguration : IEntityTypeConfiguration<HuskPrice>
 {
-    public class HuskPriceConfiguration : IEntityTypeConfiguration<HuskPrice>
+    public void Configure(EntityTypeBuilder<HuskPrice> builder)
     {
-        public void Configure(EntityTypeBuilder<HuskPrice> builder)
-        {
-            builder.HasKey(k => k.Id);
+        builder.HasKey(k => k.Id);
 
-            builder.Property(p => p.Timestamp)
-                .IsRequired();
-            builder.Property(p => p.Percent)
-                .IsRequired()
-                .HasPrecision(3, 2);
-            builder.Property(p => p.Price)
-                .IsRequired()
-                .HasPrecision(7, 2);
+        builder.Property(p => p.Timestamp)
+            .IsRequired();
+        builder.Property(p => p.Percent)
+            .IsRequired()
+            .HasPrecision(3, 2);
+        builder.Property(p => p.Price)
+            .IsRequired()
+            .HasPrecision(7, 2);
 
-            builder.HasOne(fk => fk.Harvest)
-                .WithMany(fk => fk.HuskPrices)
-                .HasForeignKey(fk => fk.HarvestId);
-        }
+        builder.HasOne(fk => fk.Harvest)
+            .WithMany(fk => fk.HuskPrices)
+            .HasForeignKey(fk => fk.HarvestId);
     }
 }
