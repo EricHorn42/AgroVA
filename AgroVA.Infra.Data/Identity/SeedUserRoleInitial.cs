@@ -1,4 +1,5 @@
 ﻿using AgroVA.Domain.Account;
+using AgroVA.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace AgroVA.Infra.Data.Identity;

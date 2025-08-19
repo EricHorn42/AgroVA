@@ -1,5 +1,4 @@
 using AgroVA.Domain.Account;
-using AgroVA.Infra.Data.Identity;
 using AgroVA.Infra.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -46,5 +45,5 @@ void SeedUserRoles(IApplicationBuilder app)
 
         seedUserRoleInitial.SeedRoles();
         seedUserRoleInitial.SeedUsers();
-    }    
+    }
 }

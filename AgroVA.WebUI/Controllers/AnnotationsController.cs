@@ -1,12 +1,9 @@
 ﻿using AgroVA.Application.DTOs;
 using AgroVA.Application.Interfaces;
 using AgroVA.Domain.Interfaces;
-using AgroVA.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace AgroVA.WebUI.Controllers;
 

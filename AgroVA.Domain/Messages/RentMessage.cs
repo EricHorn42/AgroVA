@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AgroVA.Domain.Messages;
+﻿namespace AgroVA.Domain.Messages;
 
 public static class RentMessage
 {
@@ -19,5 +13,5 @@ public static class RentMessage
     public const string MaxLengthAnnotation = "Anotação deve ter no máximo 500 caracteres";
     public const string RequiredPerson = "Pessoa é obrigatória";
     public const string RequiredPercent = "Percentual é obrigatório";
-    public const string RequiredValue = "Valor é obrigatório";        
+    public const string RequiredValue = "Valor é obrigatório";
 }

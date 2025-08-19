@@ -6,16 +6,16 @@ using AutoMapper;
 
 namespace AgroVA.Application.Services;
 
-public class ServiceBase<TEntityDto, TEntity, TRepository> : IServiceBase<TEntityDto> 
-    where TEntityDto : DTOBase 
-    where TEntity : EntityBase 
+public class ServiceBase<TEntityDto, TEntity, TRepository> : IServiceBase<TEntityDto>
+    where TEntityDto : DTOBase
+    where TEntity : EntityBase
     where TRepository : IRepositoryBase<TEntity>
 {
     private readonly TRepository _repository;
     private readonly IMapper _mapper;
 
     public ServiceBase(TRepository repository, IMapper mapper)
-    {            
+    {
         _repository = repository;
         _mapper = mapper;
     }
@@ -47,6 +47,6 @@ public class ServiceBase<TEntityDto, TEntity, TRepository> : IServiceBase<TEntit
 
     public async Task UpdateAsync(TEntityDto entityDTO)
     {
-        await _repository.UpdateAsync(_mapper.Map<TEntity>(entityDTO));            
+        await _repository.UpdateAsync(_mapper.Map<TEntity>(entityDTO));
     }
 }

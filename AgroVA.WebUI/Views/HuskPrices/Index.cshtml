@@ -1,4 +1,5 @@
-﻿@model IEnumerable<AgroVA.Application.DTOs.HuskPriceDTO>
+﻿@using AgroVA.Domain.Account
+@model IEnumerable<AgroVA.Application.DTOs.HuskPriceDTO>
 
 @{
     ViewData["Title"] = "Index";
@@ -41,12 +42,15 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Harvest.Id)
+                    @if (item.Harvest != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Harvest.Year)
+                    }
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    @if (Context.User.Identity.IsAuthenticated)
+                    @if (Context.User.Identity?.IsAuthenticated == true && Context.User.IsInRole(Roles.Admin))
                     {
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }

@@ -1,6 +1,5 @@
 ﻿using AgroVA.Domain.Messages;
 using AgroVA.Domain.Validation;
-using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
 namespace AgroVA.Domain.Entities;

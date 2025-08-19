@@ -11,7 +11,7 @@ public class PromissoryRepository : RepositoryBase<Promissory>, IPromissoryRepos
     {
     }
 
-    public async override Task<IEnumerable<Promissory>> GetAllAsync()
+    public async override Task<IEnumerable<Promissory>?> GetAllAsync()
     {
         return await _context.Set<Promissory>()
             .Include(f => f.Farmer)
@@ -19,7 +19,7 @@ public class PromissoryRepository : RepositoryBase<Promissory>, IPromissoryRepos
             .ToListAsync();
     }
 
-    public virtual async Task<Promissory> GetByIdAsync(int? id)
+    public override async Task<Promissory?> GetByIdAsync(int? id)
     {
         return await _context.Set<Promissory>()
             .Include(f => f.Farmer)

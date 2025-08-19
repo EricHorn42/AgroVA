@@ -2,7 +2,7 @@
 
 namespace AgroVA.Application.Interfaces;
 
-public interface IServiceBase<TEntityDto> 
+public interface IServiceBase<TEntityDto>
     where TEntityDto : DTOBase
 {
     Task AddAsync(TEntityDto entityDTO);

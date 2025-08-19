@@ -11,14 +11,14 @@ public class HuskPriceRepository : RepositoryBase<HuskPrice>, IHuskPriceReposito
     {
     }
 
-    public async override Task<IEnumerable<HuskPrice>> GetAllAsync()
+    public async override Task<IEnumerable<HuskPrice>?> GetAllAsync()
     {
         return await _context.Set<HuskPrice>()
             .Include(h => h.Harvest)
             .ToListAsync();
     }
 
-    public virtual async Task<HuskPrice> GetByIdAsync(int? id)
+    public override async Task<HuskPrice?> GetByIdAsync(int? id)
     {
         return await _context.Set<HuskPrice>()
             .Include(h => h.Harvest)

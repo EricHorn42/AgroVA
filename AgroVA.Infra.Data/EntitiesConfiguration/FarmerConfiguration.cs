@@ -14,7 +14,7 @@ public class FarmerConfiguration : IEntityTypeConfiguration<Farmer>
             .IsRequired()
             .HasMaxLength(150);
         builder.Property(p => p.Phone)
-            .IsRequired()                
-            .HasMaxLength(13);            
+            .IsRequired()
+            .HasMaxLength(13);
     }
 }

@@ -2,6 +2,7 @@
 using AgroVA.Application.Mappings;
 using AgroVA.Application.Services;
 using AgroVA.Domain.Account;
+using AgroVA.Domain.Entities;
 using AgroVA.Domain.Interfaces;
 using AgroVA.Infra.Data.Context;
 using AgroVA.Infra.Data.Identity;
@@ -12,11 +13,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AgroVA.Infra.IoC;
 
@@ -26,7 +22,7 @@ public static class DependencyInjection
     {
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(
-                configuration.GetConnectionString("SQLSERVERWINDOWS"),
+                configuration.GetConnectionString("DATABASE_CONNECTION"),
                 b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
                 ));
 
@@ -69,10 +65,10 @@ public static class DependencyInjection
 
     public static void MigrateDatabase(this DbContext context)
     {
-        if ((context.Database.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
+        if ((context?.Database?.GetService<IDatabaseCreator>() as RelationalDatabaseCreator)?.Exists() == true)
         {
-            context.Database.Migrate();
+            context?.Database?.Migrate();
         }
-    }       
+    }
 
 }

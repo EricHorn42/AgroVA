@@ -1,6 +1,5 @@
 ﻿using AgroVA.Domain.Messages;
 using AgroVA.Domain.Validation;
-using System;
 
 namespace AgroVA.Domain.Entities;
 

@@ -11,7 +11,7 @@ public class LoadRepository : RepositoryBase<Load>, ILoadRepository
     {
     }
 
-    public async override Task<IEnumerable<Load>> GetAllAsync()
+    public async override Task<IEnumerable<Load>?> GetAllAsync()
     {
         return await _context.Set<Load>()
             .Include(f => f.Farmer)
@@ -19,7 +19,7 @@ public class LoadRepository : RepositoryBase<Load>, ILoadRepository
             .ToListAsync();
     }
 
-    public virtual async Task<Load> GetByIdAsync(int? id)
+    public override async Task<Load?> GetByIdAsync(int? id)
     {
         return await _context.Set<Load>()
             .Include(f => f.Farmer)

@@ -1,5 +1,4 @@
 ﻿using AgroVA.Domain.Entities;
-using AgroVA.Infra.Data.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +9,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
-    
+
     public DbSet<Annotation> Annotations { get; set; }
     public DbSet<Farmer> Farmers { get; set; }
     public DbSet<Harvest> Harvests { get; set; }

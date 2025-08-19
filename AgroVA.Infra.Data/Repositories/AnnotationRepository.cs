@@ -11,15 +11,15 @@ public class AnnotationRepository : RepositoryBase<Annotation>, IAnnotationRepos
     {
     }
 
-    public async override Task<IEnumerable<Annotation>> GetAllAsync()
+    public async override Task<IEnumerable<Annotation>?> GetAllAsync()
     {
         return await _context.Set<Annotation>()
-            .Include(f => f.Farmer)  
+            .Include(f => f.Farmer)
             .Include(h => h.Harvest)
             .ToListAsync();
     }
 
-    public virtual async Task<Annotation> GetByIdAsync(int? id)
+    public override async Task<Annotation?> GetByIdAsync(int? id)
     {
         return await _context.Set<Annotation>()
             .Include(f => f.Farmer)

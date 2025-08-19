@@ -2,7 +2,6 @@
 using AgroVA.Domain.Messages;
 using AgroVA.WebUI.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace AgroVA.WebUI.Controllers;
 
@@ -37,7 +36,7 @@ public class AccountController : Controller
     {
         var result = await _authenticateService.Authenticate(model.Email, model.Password);
 
-        if (result)
+        if (result is not null)
         {
             if (string.IsNullOrEmpty(model.ReturnUrl))
                 return RedirectToAction("Index", "Home");
@@ -46,7 +45,7 @@ public class AccountController : Controller
         }
         else
         {
-            ModelState.AddModelError(string.Empty, AccountMessages.InvalidLoginAttempt);
+            ModelState.AddModelError("Error", AccountMessages.InvalidLoginAttempt);
             return View(model);
         }
     }
@@ -54,12 +53,21 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
-        var result = await _authenticateService.Register(model.Email, model.Password);
+        if (!ModelState.IsValid 
+            || string.IsNullOrWhiteSpace(model.Email) 
+            || string.IsNullOrWhiteSpace(model.Name) 
+            || string.IsNullOrWhiteSpace(model.Password))
+        {
+            ModelState.AddModelError("Error", AccountMessages.InvalidRegisterAttempt);
+            return View(model);
+        };
+
+        var result = await _authenticateService.Register(model.Email, model.Name, model.Password);
 
         if (result)
             return RedirectToAction("Index", "Home");
         else
-            ModelState.AddModelError(string.Empty, AccountMessages.InvalidRegisterAttempt);
+            ModelState.AddModelError("Error", AccountMessages.InvalidRegisterAttempt);
 
         return View(model);
     }

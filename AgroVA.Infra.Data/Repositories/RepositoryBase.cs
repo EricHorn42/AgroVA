@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AgroVA.Infra.Data.Repositories;
 
-public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> 
+public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
     where TEntity : EntityBase
 {
     protected readonly ApplicationDbContext _context;
-    
+
     public RepositoryBase(ApplicationDbContext context)
     {
         _context = context;
@@ -36,12 +36,12 @@ public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
         return entity;
     }
 
-    public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
+    public virtual async Task<IEnumerable<TEntity>?> GetAllAsync()
     {
         return await _context.Set<TEntity>().ToListAsync();
     }
 
-    public virtual async Task<TEntity> GetByIdAsync(int? id)
+    public virtual async Task<TEntity?> GetByIdAsync(int? id)
     {
         return await _context.Set<TEntity>().FindAsync(id);
     }

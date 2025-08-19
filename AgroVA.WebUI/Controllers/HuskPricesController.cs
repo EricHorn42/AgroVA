@@ -1,6 +1,5 @@
 ﻿using AgroVA.Application.DTOs;
 using AgroVA.Application.Interfaces;
-using AgroVA.Domain.Entities;
 using AgroVA.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,7 +19,7 @@ public class HuskPricesController : ControllerBase<IHuskPriceService, HuskPriceD
 
     [HttpGet]
     public override async Task<IActionResult> Create()
-    {        
+    {
         ViewData["FarmerId"] = new SelectList(await _farmerRepository.GetAllAsync(), "Id", "Name");
         ViewData["HarvestId"] = new SelectList(await _harvestRepository.GetAllAsync(), "Id", "Year");
         return View();
@@ -31,6 +30,6 @@ public class HuskPricesController : ControllerBase<IHuskPriceService, HuskPriceD
     {
         dtos.Percent = dtos.Percent / 100;
 
-        return await base .Create(dtos);            
+        return await base.Create(dtos);
     }
 }

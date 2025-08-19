@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace AgroVA.Infra.Data.Identity;
+namespace AgroVA.Domain.Entities;
 
 public class ApplicationUser : IdentityUser
 {

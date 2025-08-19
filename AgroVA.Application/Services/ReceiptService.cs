@@ -11,4 +11,4 @@ public class ReceiptService : ServiceBase<ReceiptDTO, Receipt, IReceiptRepositor
     public ReceiptService(IReceiptRepository repository, IMapper mapper) : base(repository, mapper)
     {
     }
-}    
+}

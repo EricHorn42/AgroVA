@@ -3,6 +3,7 @@ using AgroVA.Domain.Messages;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AgroVA.Application.DTOs;
 
@@ -47,11 +48,13 @@ public class LoadDTO : DTOBase
 
     public int FarmerId { get; set; }
 
+    [JsonIgnore]
     [DisplayName("Produtor")]
     public Farmer? Farmer { get; set; }
 
     public int HarvestId { get; set; }
 
+    [JsonIgnore]
     [DisplayName("Safra")]
     public Harvest? Harvest { get; set; }
 }

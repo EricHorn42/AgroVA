@@ -32,7 +32,7 @@
             @Html.DisplayNameFor(model => model.Harvest)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Harvest.Id)
+            @Html.DisplayFor(model => model.Harvest != null ? model.Harvest.Id : 0)
         </dd>
     </dl>
 </div>

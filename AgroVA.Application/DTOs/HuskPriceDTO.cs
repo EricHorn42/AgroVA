@@ -3,6 +3,7 @@ using AgroVA.Domain.Messages;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AgroVA.Application.DTOs;
 
@@ -30,6 +31,7 @@ public class HuskPriceDTO : DTOBase
 
     public int HarvestId { get; set; }
 
+    [JsonIgnore]
     [DisplayName("Safra")]
     public Harvest? Harvest { get; set; }
 

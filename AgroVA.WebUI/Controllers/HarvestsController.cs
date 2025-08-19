@@ -1,6 +1,5 @@
 ﻿using AgroVA.Application.DTOs;
 using AgroVA.Application.Interfaces;
-using AgroVA.Domain.Interfaces;
 
 namespace AgroVA.WebUI.Controllers;
 

@@ -50,7 +50,7 @@ public class RentUnitTest1
     public void AddRent_WithNegativePercentual_DomainExceptionInvalidPercent(int percent)
     {
         Action action = () => new Rent(1, "Person", percent, 0, "Annotation");
-        
+
         action.Should()
             .Throw<AgroVA.Domain.Validation.DomainExceptionValidation>()
             .WithMessage(AgroVA.Domain.Messages.RentMessage.InvalidPercent);

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AgroVA.Application.DTOs;
+﻿namespace AgroVA.Application.DTOs;
 
 public abstract class DTOBase
 {
